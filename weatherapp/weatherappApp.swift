@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct weatherappApp: App {
+    
+    @StateObject var locationManager = LocationManager.shared
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if locationManager.currentLocation != nil {
+                RootView()
+            } else {
+                LocationPermissionView()
+            }
         }
     }
 }
