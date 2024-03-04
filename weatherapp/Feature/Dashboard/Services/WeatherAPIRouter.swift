@@ -9,6 +9,7 @@ import Foundation
 
 enum WeatherAPIRouter {
     
+    // Instead, store them in your codebase. Common methods include environment variables, key management services, or configuration files that are not checked into version control.
     private static let apiKey = "111f0273c10bd521fb13ef78e55fbb60"
     
     case currentWeather(location: Location)

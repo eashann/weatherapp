@@ -8,53 +8,6 @@
 import Combine
 import SwiftUI
 
-struct DailyWeathers {
-    let temp: String
-    let condition: String
-    let date: String
-}
-
-enum WeatherState {
-    case loading, success, failed
-}
-
-enum Images {
-    
-    case feels
-    case pressure
-    case humidity
-    case dewPoint
-    case uvi
-    case cloud
-    case windSpeed
-    case windDegree
-    
-    var imageName: String {
-        switch self {
-        case .feels:
-            return "thermometer.snowflake"
-        case .pressure:
-            return "wind"
-        case .humidity:
-            return "humidity"
-        case .dewPoint:
-            return "cloud.snow"
-        case .uvi:
-            return "sun.max"
-        case .cloud:
-            return "cloud.circle"
-        case .windSpeed:
-            return "wind.snow"
-        case .windDegree:
-            return "wind.circle.fill"
-        }
-    }
-    
-    var getImage: UIImage {
-        return UIImage(systemName: imageName) ?? UIImage()
-    }
-}
-
 class WeatherPresenter: ObservableObject {
     
     @Published private var weatherData: WeatherData?

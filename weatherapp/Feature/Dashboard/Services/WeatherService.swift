@@ -5,8 +5,8 @@
 //  Created by Eashan on 29/2/24.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 protocol WeatherServiceProtocol {
     func fetchWeather(for location: Location) -> AnyPublisher<WeatherData, APIError>

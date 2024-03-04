@@ -81,3 +81,13 @@ struct Location {
     let latitude: Double
     let longitude: Double
 }
+
+struct DailyWeathers {
+    let temp: String
+    let condition: String
+    let date: String
+}
+
+enum WeatherState {
+    case loading, success, failed
+}

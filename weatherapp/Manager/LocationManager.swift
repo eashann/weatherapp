@@ -35,9 +35,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-//        if let clErr = error as? CLError, clErr.code == .denied {
-//            self.requestLocationPermission()
-//        }
+        print(error.localizedDescription)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

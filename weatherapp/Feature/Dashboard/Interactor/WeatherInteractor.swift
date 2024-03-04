@@ -5,8 +5,8 @@
 //  Created by Eashan on 29/2/24.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 enum APIError: Error {
     case invalidResponse
