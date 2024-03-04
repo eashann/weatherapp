@@ -10,9 +10,6 @@ import SwiftUI
 
 class WeatherPresenter: ObservableObject {
     
-    @Published private var weatherData: WeatherData?
-    @Published private var weatherState: WeatherState? = .loading
-    
     @Published var currentLocation: String = ""
     @Published var currentDate: String = ""
     @Published var currentCondition: String = ""
@@ -27,7 +24,9 @@ class WeatherPresenter: ObservableObject {
     @Published var currentWindDegree: String = ""
     @Published var image: Images = .feels
     @Published var dailyWeathers: [DailyWeathers] = []
-
+    @Published var weatherState: WeatherState? = .loading
+    @Published private var weatherData: WeatherData?
+    
     private let interactor: WeatherInteractor
     private var cancellable: AnyCancellable?
     
@@ -36,38 +35,6 @@ class WeatherPresenter: ObservableObject {
     init(interactor: WeatherInteractor) {
         self.interactor = interactor
         fetchWeatherData(for: fetchCurrentLocation())
-    }
-    
-    private func fetchCurrentLocation() -> Location {
-        if let latitude = locationManager.currentLocation?.coordinate.latitude,
-            let longitude = locationManager.currentLocation?.coordinate.longitude {
-            print(longitude)
-            return Location(latitude: latitude, longitude: longitude)
-        } else {
-            print("Location not available.")
-        }
-        
-        return Location(latitude: 0.0, longitude: 0.0)
-    }
-    
-    private func fetchWeatherData(for location: Location) {
-        
-        
-        
-        cancellable = interactor.fetchWeatherData(for: location)
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] error in
-                switch error {
-                case .finished:
-                    self?.weatherState = .loading
-                case .failure:
-                    self?.weatherState = .failed
-                }
-            }, receiveValue: { [weak self] weatherData in
-                self?.weatherData = weatherData
-                self?.weatherState = .success
-                self?.setCurrentWeatherData()
-            })
     }
     
     private func setCurrentWeatherData() {
@@ -84,6 +51,34 @@ class WeatherPresenter: ObservableObject {
         setWindSpeed()
         setWindDegree()
         setHourlyWeather()
+    }
+    
+    private func fetchCurrentLocation() -> Location {
+        if let latitude = locationManager.currentLocation?.coordinate.latitude,
+           let longitude = locationManager.currentLocation?.coordinate.longitude {
+            return Location(latitude: latitude, longitude: longitude)
+        } else {
+            self.weatherState = .failed
+            print("Location not available.")
+        }
+        return Location(latitude: 0.0, longitude: 0.0)
+    }
+    
+    private func fetchWeatherData(for location: Location) {
+        cancellable = interactor.fetchWeatherData(for: location)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] error in
+                switch error {
+                case .finished:
+                    self?.weatherState = .loading
+                case .failure:
+                    self?.weatherState = .failed
+                }
+            }, receiveValue: { [weak self] weatherData in
+                self?.weatherData = weatherData
+                self?.setCurrentWeatherData()
+                self?.weatherState = .success
+            })
     }
     
     private func setCurrentLocation() {
