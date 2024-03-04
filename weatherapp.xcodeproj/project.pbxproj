@@ -515,6 +515,7 @@
 				DEVELOPMENT_TEAM = 86F8CY62G9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Weather;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need your location for weather update";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -547,6 +548,7 @@
 				DEVELOPMENT_TEAM = 86F8CY62G9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Weather;
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Need your location for weather update";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

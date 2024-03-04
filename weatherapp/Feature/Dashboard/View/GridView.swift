@@ -21,8 +21,10 @@ struct GridView: View {
                 .foregroundColor(.orange)
             VStack(alignment: .leading) {
                 Text(title)
+                    .foregroundStyle(.white)
                     .font(.footnote)
                 Text(subtitle)
+                    .foregroundStyle(.white)
                     .font(.title2)
             }
         }

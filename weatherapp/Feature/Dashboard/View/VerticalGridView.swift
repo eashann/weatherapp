@@ -21,6 +21,7 @@ struct VerticalGridView: View {
                             .bold()
                         Text(item.condition)
                     }
+                    .foregroundStyle(.white)
                 }
             }
         }

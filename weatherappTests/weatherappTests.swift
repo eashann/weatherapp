@@ -32,7 +32,7 @@ class weatherappTests: XCTestCase {
         let location = Location(latitude: 0.0, longitude: 0.0)
         
         // When
-        //        presenter.fetchWeatherData(for: location)
+        // presenter.fetchWeatherData(for: location)
         
         // Then
         XCTAssertTrue(mockInteractor.fetchWeatherDataCalled)
@@ -40,13 +40,13 @@ class weatherappTests: XCTestCase {
     
     func testSetCurrentWeatherData() {
         // Given
-        //        let weatherData = WeatherData()
+        // let weatherData = WeatherData()
         
         // When
-        //        presenter.setCurrentWeatherData()
+        // presenter.setCurrentWeatherData()
         
         // Then
-        //        XCTAssertEqual(presenter.currentLocation, weatherData.timezone)
+        // XCTAssertEqual(presenter.currentLocation, weatherData.timezone)
         // Test other properties as well
     }
     

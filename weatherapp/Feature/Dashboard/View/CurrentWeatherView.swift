@@ -14,23 +14,27 @@ struct CurrentWeatherView: View {
     var body: some View {
         VStack(spacing: 8) {
             Text(presenter.currentLocation)
+                .foregroundStyle(.white)
                 .font(.title)
                 .bold()
             
             Text(presenter.currentDate)
                 .font(.subheadline)
+                .bold()
                 .padding(8)
                 .background(
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(Color.black)
+                        .foregroundColor(.orange)
                 )
-                .foregroundColor(Color.orange)
+                .foregroundColor(.white)
             
             Text(presenter.currentCondition)
+                .foregroundStyle(.white)
                 .font(.title2)
                 .bold()
             
             Text("\(presenter.currentTemp)\u{00B0}")
+                .foregroundStyle(.white)
                 .font(.system(size: 150))
         }
     }
